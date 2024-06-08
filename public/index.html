@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Howbee</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        body {
+            background-color: black;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .circle {
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, #FFFFFF 0%, #ffb55c 20%);
+            border-radius: 50%;
+            animation: expandCircle 10s forwards;
+        }
+        @keyframes expandCircle {
+            0% {
+                width: 20px;
+                height: 20px
+            }
+            100% {
+                width: 5000px;
+                height: 5000px;
+                background: radial-gradient(circle, #FFFFFF 0%, #ffb55c 20%);
+            }
+        }
+
+        .overlay {
+            width: 200px;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            z-index: 999999999;
+            height: 50px;
+            background: black;
+        }
+
+        .circle {
+            display: none;
+        }
+        .main-anime{
+            width: 100vw;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-anime">
+        <spline-viewer id="latto-anime"
+            url="https://prod.spline.design/ioBZG-9aoxA2ut0X/scene.splinecode"></spline-viewer>
+    </div>
+    <div class="overlay">
+    </div>
+    <div class="circle">
+    </div>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.4.6/build/spline-viewer.js"></script>
+    <script>
+        console.log(document.getElementById("shadow-root"))
+        let mainAnime = document.querySelector(".main-anime");
+        console.log(
+            document.body
+        )
+        mainAnime.addEventListener("click", () => {
+            setTimeout(() => {
+                mainAnime.style.display = 'none';
+                document.querySelector(".overlay").style.display = 'none';
+                document.querySelector(".circle").style.display = 'block'
+            }, 3000);
+            setTimeout(() => {
+                window.location.href = "./howbee_intro.html"
+            }, 6000);
+        });
+    </script>
+</body>
+
+</html>
